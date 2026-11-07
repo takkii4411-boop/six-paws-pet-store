@@ -2,14 +2,14 @@
 
 ![Odoo](https://img.shields.io/badge/Odoo-19.0-purple) ![Modules](https://img.shields.io/badge/Custom%20Modules-4-blue) ![License](https://img.shields.io/badge/License-LGPL--3-green)
 
-An e-commerce/resale platform for pet-products built on Odoo 19 — **client-driven customizations**: **pet profiles**, a **customer portal for pets**, **pet-aware product customization**, and **pet-based product filtering in Sales Orders**.
+An e-commerce/resale platform for pet-products built on Odoo 19. **My work: the `pet_profile` master-data module and the `sales_customization` pet-based product filtering in Sale Orders** — co-built with the team; the **portal** and **product_customization** modules are team deliverables bundled here for full-suite context.
 
 ```
 six-paws-pet-store/
-├── pet_profile/            # Pet master data (breed, type, DOB, owner, photos…)
-├── pet_profile_portal/     # Portal-side access for customers to manage pets
-├── product_customization/  # Pet-specific product personalization
-└── sales_customization/    # Filter products in SO lines by selected pet
+├── pet_profile/            # Pet master data (breed, type, DOB, owner, photos…) ← MY WORK
+├── pet_profile_portal/     # Portal-side access for customers to manage pets (team)
+├── product_customization/  # Pet-specific product personalization (team)
+└── sales_customization/    # Filter products in SO lines by selected pet ← MY WORK
 ```
 
 ## Highlights
