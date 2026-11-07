@@ -2,7 +2,7 @@
 
 ![Odoo](https://img.shields.io/badge/Odoo-19.0-purple) ![Modules](https://img.shields.io/badge/Custom%20Modules-4-blue) ![License](https://img.shields.io/badge/License-LGPL--3-green)
 
-An e-commerce/resale platform for pet-products built on Odoo 19 — **pet profiles**, a **customer portal for pets**, **pet-aware product customization**, and **pet-based product filtering in Sales Orders**.
+An e-commerce/resale platform for pet-products built on Odoo 19 — **client-driven customizations**: **pet profiles**, a **customer portal for pets**, **pet-aware product customization**, and **pet-based product filtering in Sales Orders**.
 
 ```
 six-paws-pet-store/
