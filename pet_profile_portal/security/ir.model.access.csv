@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_pet_profile_portal,pet.profile.portal,model_pet_profile,base.group_portal,1,1,1,1
+access_pet_vaccination_portal,pet.vaccination.portal,model_pet_vaccination,base.group_portal,1,1,1,1

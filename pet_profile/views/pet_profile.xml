@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Pet Profile Form View -->
+    <record id="view_pet_profile_form" model="ir.ui.view">
+        <field name="name">pet.profile.form</field>
+        <field name="model">pet.profile</field>
+        <field name="arch" type="xml">
+            <form string="Pet Profile">
+                <sheet>
+                    <field name="image" widget="image" class="oe_avatar"/>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Pet Name" required="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Basic Information">
+                            <field name="partner_id"/>
+                            <field name="pet_type_id" required="1"/>
+                            <field name="breed_id" required="1"/>
+                            <field name="date_of_birth"/>
+                            <field name="age" readonly="1"/>
+                            <field name="gender"/>
+                            <field name="weight"/>
+                            <field name="color" widget="color"/>
+                        </group>
+                        <group string="Additional Details">
+                            <field name="microchip_number"/>
+                            <field name="is_vaccinated" readonly="1"/>
+                            <field name="vaccination_status" readonly="1"/>
+                            <field name="special_notes"
+                                   placeholder="Medical conditions, allergies, behavioral notes..."/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Vaccination Records">
+                            <field name="vaccination_ids">
+                                <list editable="bottom">
+                                    <field name="vaccination_type"/>
+                                    <field name="vaccination_date"/>
+                                    <field name="next_due_date"/>
+                                    <field name="veterinarian"/>
+                                    <field name="status"/>
+                                </list>
+                            </field>
+                            <group string="Vaccination Cards">
+                                <field name="vaccination_card_ids"
+                                       widget="many2many_binary"
+                                />
+                            </group>
+                        </page>
+                        <page string="Emergency Contact">
+                            <group>
+                                <field name="emergency_contact_name"/>
+                                <field name="emergency_contact_phone"/>
+                                <field name="preferred_veterinarian"/>
+                                <field name="vet_phone"/>
+                                <field name="vet_address"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <!-- Pet Profile list View -->
+    <record id="view_pet_profile_list" model="ir.ui.view">
+        <field name="name">pet.profile.list</field>
+        <field name="model">pet.profile</field>
+        <field name="arch" type="xml">
+            <list string="Pet Profiles" default_order="pet_code desc">
+                <field name="pet_code" readonly="1"/>
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="pet_type_id"/>
+                <field name="breed_id"/>
+                <field name="age"/>
+                <field name="is_vaccinated"/>
+                <field name="vaccination_status" widget="badge"
+                       decoration-success="vaccination_status == 'valid'"
+                       decoration-warning="vaccination_status == 'expiring'"
+                       decoration-info="vaccination_status == 'none'"
+                       decoration-danger="vaccination_status == 'expired'"/>
+
+            </list>
+        </field>
+    </record>
+
+    <!-- Pet Profile Kanban View -->
+    <record id="view_pet_profile_kanban" model="ir.ui.view">
+        <field name="name">pet.profile.kanban</field>
+        <field name="model">pet.profile</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="id"/>
+                <field name="name"/>
+                <field name="pet_type_id"/>
+                <field name="breed_id"/>
+                <field name="image"/>
+                <field name="vaccination_status"/>
+                <templates>
+                    <t t-name="card">
+                        <div class="oe_kanban_global_click">
+                            <div class="o_kanban_image">
+                                <!--                                <img t-att-src="kanban_image('pet.profile', 'image', record.id.raw_value)" alt="Pet"/>-->
+                            </div>
+                            <div class="oe_kanban_details">
+                                <strong class="o_kanban_record_title">
+                                    <field name="name"/>
+                                </strong>
+                                <div>
+                                    <field name="pet_type_id"/>
+                                    -
+                                    <field name="breed_id"/>
+                                </div>
+                                <div>
+                                    <span class="badge"
+                                          t-att-class="record.vaccination_status.raw_value == 'valid' ? 'badge-success' : record.vaccination_status.raw_value == 'expiring' ? 'badge-warning' : 'badge-danger'">
+                                        <field name="vaccination_status"/>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- Vaccination Record Form View -->
+    <record id="view_pet_vaccination_form" model="ir.ui.view">
+        <field name="name">pet.vaccination.form</field>
+        <field name="model">pet.vaccination</field>
+        <field name="arch" type="xml">
+            <form string="Vaccination Record">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="pet_id"/>
+                            <field name="vaccination_type"/>
+                            <field name="other_vaccination_name"
+                                   invisible="vaccination_type != 'other'"/>
+                            <field name="vaccination_date"/>
+                            <field name="next_due_date"/>
+                        </group>
+                        <group>
+                            <field name="veterinarian"/>
+                            <field name="vet_license_number"/>
+                            <field name="status" readonly="1"/>
+                            <field name="batch_number"/>
+                        </group>
+                    </group>
+                    <group string="Vaccination Certificate">
+                        <field name="certificate_image" widget="many2many_binary"/>
+                    </group>
+                    <group string="Notes">
+                        <field name="notes" placeholder="Any reactions or additional information..."/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_pet_vaccination_list" model="ir.ui.view">
+        <field name="name">pet.vaccination.list</field>
+        <field name="model">pet.vaccination</field>
+        <field name="arch" type="xml">
+            <list default_order="pet_id desc">
+                <field name="pet_id"/>
+                <field name="vaccination_type"/>
+                <field name="vaccination_date"/>
+                <field name="next_due_date"/>
+                <field name="veterinarian"/>
+                <field name="vet_license_number"/>
+                <field name="status" readonly="1"/>
+                <field name="batch_number"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="view_pet_profile_search" model="ir.ui.view">
+        <field name="name">pet.profile.search</field>
+        <field name="model">pet.profile</field>
+        <field name="arch" type="xml">
+            <search string="Search Pets">
+                <field name="name"/>
+                <field name="pet_type_id"/>
+                <field name="breed_id"/>
+                <field name="partner_id"/>
+                <!--                <filter string="Vaccinated" name="vaccinated" domain="[('is_vaccinated', '=', True)]"/>-->
+                <!--                <filter string="Not Vaccinated" name="not_vaccinated" domain="[('is_vaccinated', '=', False)]"/>-->
+                <filter string="Valid Vaccination" name="valid_vaccination"
+                        domain="[('vaccination_status', '=', 'valid')]"/>
+                <filter string="Expiring Soon" name="expiring_vaccination"
+                        domain="[('vaccination_status', '=', 'expiring')]"/>
+                <filter string="Expired Vaccination" name="expired_vaccination"
+                        domain="[('vaccination_status', '=', 'expired')]"/>
+                <!--                                <group expand="0" string="Group By">-->
+                <!--                                    <filter string="Pet Type" name="group_pet_type" context="{'group_by': 'pet_type'}"/>-->
+                <!--                                    <filter string="Vaccination Status" name="group_vaccination_status" context="{'group_by': 'vaccination_status'}"/>-->
+                <!--                                    <filter string="Owner" name="group_user" context="{'group_by': 'partner_id'}"/>-->
+                <!--                                </group>-->
+            </search>
+        </field>
+    </record>
+
+    <!-- Actions -->
+    <record id="action_pet_profile" model="ir.actions.act_window">
+        <field name="name">Pet Profiles</field>
+        <field name="res_model">pet.profile</field>
+        <field name="view_mode">list,kanban,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add your first pet!
+            </p>
+            <p>
+                Create pet profiles to access grooming and boarding services.
+            </p>
+        </field>
+    </record>
+
+    <record id="action_pet_vaccination" model="ir.actions.act_window">
+        <field name="name">Vaccination Records</field>
+        <field name="res_model">pet.vaccination</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>

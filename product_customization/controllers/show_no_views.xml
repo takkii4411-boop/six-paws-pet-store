@@ -1,0 +1,17 @@
+
+<odoo>
+    <template id="auth_signup_fields_phone_extend" inherit_id="auth_signup.fields" name="Signup Phone Field">
+        <xpath expr="//div[hasclass('field-password')]" position="before">
+            <div class="mb-3">
+                <label for="phone" class="form-label">Phone Number</label>
+                <input type="text"
+                       name="phone"
+                       t-att-value="phone"
+                       id="phone"
+                       class="form-control"
+                       placeholder="e.g. +91 9876543210"
+                       required="required"/>
+            </div>
+        </xpath>
+    </template>
+</odoo>

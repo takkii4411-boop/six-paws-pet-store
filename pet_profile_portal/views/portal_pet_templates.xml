@@ -1,0 +1,54 @@
+<odoo>
+    <template id="portal_my_pets">
+        <t t-call="portal.portal_layout">
+            <div class="container">
+                <h2>My Pets</h2>
+                    <a href="/my/pets/new" class="btn btn-primary mb-3">Add Pet</a>
+
+                <table class="table table-striped">
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Age</th>
+                        <th>vac</th>
+                        <th>Actions</th>
+                    </tr>
+                    <t t-foreach="pets" t-as="pet">
+                        <tr>
+                            <td>
+                                <t t-esc="pet.name"/>
+                            </td>
+                            <td>
+                                <t t-esc="pet.pet_type_id.name"/>
+                            </td>
+                            <td>
+                                <t t-esc="pet.age"/>
+                            </td>
+                            <td>
+                               <span t-esc="dict(pet._fields['vaccination_status'].selection).get(pet.vaccination_status)"/>
+                            </td>
+                            <td>
+                                <a t-attf-href="/my/pets/#{pet.id}/edit" class="btn btn-sm btn-outline-primary">
+                                    <i class="fa fa-pencil-square-o"/>
+                                    Edit
+                                </a>
+                                |
+                                <a t-attf-href="/my/pets/#{pet.id}/delete" class="btn btn-sm btn-outline-danger"
+                                   onclick="return confirm('Are you sure?')">
+                                    <i class="fa fa-trash"/>
+                                    Delete
+                                </a>
+                            </td>
+                        </tr>
+                    </t>
+                </table>
+                <div t-if="pager" class="o_portal_pager d-flex justify-content-center">
+                    <t t-call="portal.pager"/>
+                </div>
+            </div>
+        </t>
+
+
+    </template>
+</odoo>
+

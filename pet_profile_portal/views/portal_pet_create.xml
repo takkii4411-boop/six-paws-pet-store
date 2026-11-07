@@ -1,0 +1,73 @@
+<odoo>
+    <template id="portal_pet_form">
+        <t t-call="portal.portal_layout">
+            <div class="container">
+                <h2>
+                    <t t-if="pet">Edit Pet</t>
+                    <t t-else="">Add Pet</t>
+                </h2>
+
+                <form action="/my/pets/save" method="post">
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                    <input type="hidden" name="pet_id" t-att-value="pet.id if pet else ''"/>
+
+                    <div class="form-group">
+                        <label>Pet Name</label>
+                        <input type="text" name="name" class="form-control"
+                               t-att-value="pet.name if pet else ''" required="1"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Pet Type</label>
+                        <select name="pet_type_id" class="form-control" required="1">
+                            <t t-foreach="pet_types" t-as="type">
+                                <option t-att-value="type.id"
+                                        t-att-selected="pet and pet.pet_type_id.id == type.id">
+                                    <t t-esc="type.name"/>
+                                </option>
+                            </t>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Breed</label>
+                        <select name="breed_id" class="form-control" required="1">
+                            <t t-foreach="breeds" t-as="breed">
+                                <option t-att-value="breed.id"
+                                        t-att-selected="pet and pet.breed_id.id == breed.id">
+                                    <t t-esc="breed.name"/>
+                                </option>
+                            </t>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Date of Birth</label>
+                        <input type="date" name="date_of_birth" class="form-control"
+                               t-att-value="pet.date_of_birth if pet else ''"/>
+                    </div>
+
+                    <button type="submit" class="btn btn-success">Save</button>
+                    <a href="/my/pets" class="btn btn-secondary">Cancel</a>
+                </form>
+            </div>
+        </t>
+    </template>
+
+    <template id="portal_my_pets_breadcrumb_form" inherit_id="portal.portal_breadcrumbs">
+        <xpath expr="//ol" position="inside">
+            <li t-if="page_name == 'pet_form'" class="breadcrumb-item">
+                <a href="/my/pets">My Pets</a>
+            </li>
+            <li t-if="page_name == 'pet_form'" class="breadcrumb-item active">
+                <t t-if="pet">
+                    <span t-field="pet.name"/>
+                </t>
+                <t t-else="">
+                    New Pet
+                </t>
+            </li>
+        </xpath>
+    </template>
+
+</odoo>
+

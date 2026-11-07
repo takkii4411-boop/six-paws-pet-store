@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_pet_portal_root"
+              name="Pet Portal"
+              sequence="10"
+              web_icon="pet_profile/static/description/icon.png"/>
+
+    <menuitem id="menu_pet_portal_pets"
+              name="Pets"
+              parent="menu_pet_portal_root"
+              sequence="10"/>
+
+    <menuitem id="menu_pet_profiles"
+              name="Pet Profiles"
+              parent="menu_pet_portal_pets"
+              action="action_pet_profile"
+              sequence="10"/>
+
+    <menuitem id="menu_pet_vaccinations"
+              name="Vaccination Records"
+              parent="menu_pet_portal_pets"
+              action="action_pet_vaccination"
+              sequence="20"/>
+
+    <menuitem id="menu_pet_portal_config"
+              name="Configuration"
+              parent="menu_pet_portal_root"
+              sequence="100"
+              groups="base.group_system"/>
+
+    <menuitem id="menu_pet_types"
+              name="Pet Types"
+              parent="menu_pet_portal_config"
+              action="action_pet_type"
+              sequence="10"/>
+
+    <menuitem id="menu_pet_breeds"
+              name="Breeds"
+              parent="menu_pet_portal_config"
+              action="action_pet_breed"
+              sequence="20"/>
+</odoo>

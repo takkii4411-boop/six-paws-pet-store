@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ======================== PET TYPE VIEWS ======================== -->
+
+    <!-- Pet Type Form View -->
+    <record id="view_pet_type_form" model="ir.ui.view">
+        <field name="name">pet.type.form</field>
+        <field name="model">pet.type</field>
+        <field name="arch" type="xml">
+            <form string="Pet Type">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="sequence"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Breeds">
+                            <field name="breed_ids">
+                                <list editable="bottom">
+                                    <field name="name"/>
+                                    <field name="average_weight"/>
+                                    <field name="average_lifespan"/>
+                                    <field name="active"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <!-- Pet Type list View -->
+    <record id="view_pet_type_list" model="ir.ui.view">
+        <field name="name">pet.type.list</field>
+        <field name="model">pet.type</field>
+        <field name="arch" type="xml">
+            <list string="Pet Types">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Pet Type Search View -->
+    <record id="view_pet_type_search" model="ir.ui.view">
+        <field name="name">pet.type.search</field>
+        <field name="model">pet.type</field>
+        <field name="arch" type="xml">
+            <search string="Search Pet Types">
+                <field name="name"/>
+                <filter string="Active" name="active" domain="[('active', '=', True)]"/>
+                <filter string="Archived" name="archived" domain="[('active', '=', False)]"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Pet Type Action -->
+    <record id="action_pet_type" model="ir.actions.act_window">
+        <field name="name">Pet Types</field>
+        <field name="res_model">pet.type</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{'search_default_active': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add a new pet type!
+            </p>
+            <p>
+                Define the types of pets that can be registered (Dog, Cat, Bird, etc.)
+            </p>
+        </field>
+    </record>
+
+    <!-- ======================== PET BREED VIEWS ======================== -->
+
+    <!-- Pet Breed Form View -->
+    <record id="view_pet_breed_form" model="ir.ui.view">
+        <field name="name">pet.breed.form</field>
+        <field name="model">pet.breed</field>
+        <field name="arch" type="xml">
+            <form string="Pet Breed">
+                <sheet>
+                    <group>
+                        <group string="Basic Information">
+                            <field name="name"/>
+                            <field name="pet_type_id" options="{'no_create': True}"/>
+                        </group>
+                        <group string="Characteristics">
+                            <field name="average_weight"/>
+                            <field name="average_lifespan"/>
+                        </group>
+                    </group>
+                    <group string="Description">
+                        <field name="description"
+                               placeholder="Enter breed description, characteristics, temperament, etc."/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Pet Breed list View -->
+    <record id="view_pet_breed_list" model="ir.ui.view">
+        <field name="name">pet.breed.list</field>
+        <field name="model">pet.breed</field>
+        <field name="arch" type="xml">
+            <list string="Pet Breeds">
+                <field name="name"/>
+                <field name="pet_type_id"/>
+                <field name="average_weight" optional="show"/>
+                <field name="average_lifespan" optional="show"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Pet Breed Kanban View -->
+
+    <!-- Pet Breed Search View -->
+    <record id="view_pet_breed_search" model="ir.ui.view">
+        <field name="name">pet.breed.search</field>
+        <field name="model">pet.breed</field>
+        <field name="arch" type="xml">
+            <search string="Search Pet Breeds">
+                <field name="name"/>
+                <field name="pet_type_id"/>
+                <filter string="Active" name="active" domain="[('active', '=', True)]"/>
+                <filter string="Archived" name="archived" domain="[('active', '=', False)]"/>
+                <!--                <group expand="0" string="Group By">-->
+                <!--                    <filter string="Pet Type" name="group_pet_type" context="{'group_by': 'pet_type_id'}"/>-->
+                <!--                </group>-->
+            </search>
+        </field>
+    </record>
+
+    <!-- Pet Breed Action -->
+    <record id="action_pet_breed" model="ir.actions.act_window">
+        <field name="name">Pet Breeds</field>
+        <field name="res_model">pet.breed</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{'search_default_active': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add a new pet breed!
+            </p>
+            <p>
+                Define the breeds available for each pet type.
+            </p>
+        </field>
+    </record>
+
+</odoo>

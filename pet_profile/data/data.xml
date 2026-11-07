@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="pet_type_dog" model="pet.type">
+            <field name="name">Dog</field>
+            <field name="code">dog</field>
+        </record>
+
+        <record id="pet_type_cat" model="pet.type">
+            <field name="name">Cat</field>
+            <field name="code">cat</field>
+        </record>
+
+        <record id="pet_type_bird" model="pet.type">
+            <field name="name">Bird</field>
+            <field name="code">bird</field>
+        </record>
+
+        <record id="pet_type_rabbit" model="pet.type">
+            <field name="name">Rabbit</field>
+            <field name="code">rabbit</field>
+        </record>
+
+        <record id="pet_type_hamster" model="pet.type">
+            <field name="name">Hamster</field>
+            <field name="code">hamster</field>
+        </record>
+
+        <record id="pet_type_fish" model="pet.type">
+            <field name="name">Fish</field>
+            <field name="code">fish</field>
+        </record>
+
+        <record id="pet_type_reptile" model="pet.type">
+            <field name="name">Reptile</field>
+            <field name="code">reptile</field>
+        </record>
+
+        <record id="pet_type_guinea_pig" model="pet.type">
+            <field name="name">Guinea Pig</field>
+            <field name="code">guinea_pig</field>
+        </record>
+
+        <!-- Dog Breeds -->
+        <record id="breed_dog_labrador" model="pet.breed">
+            <field name="name">Labrador Retriever</field>
+            <field name="pet_type_id" ref="pet_type_dog"/>
+            <field name="average_weight">30</field>
+            <field name="average_lifespan">12</field>
+        </record>
+
+        <record id="breed_dog_german_shepherd" model="pet.breed">
+            <field name="name">German Shepherd</field>
+            <field name="pet_type_id" ref="pet_type_dog"/>
+            <field name="average_weight">35</field>
+            <field name="average_lifespan">11</field>
+        </record>
+
+        <record id="breed_dog_golden_retriever" model="pet.breed">
+            <field name="name">Golden Retriever</field>
+            <field name="pet_type_id" ref="pet_type_dog"/>
+            <field name="average_weight">32</field>
+            <field name="average_lifespan">11</field>
+        </record>
+
+        <record id="breed_dog_bulldog" model="pet.breed">
+            <field name="name">Bulldog</field>
+            <field name="pet_type_id" ref="pet_type_dog"/>
+            <field name="average_weight">23</field>
+            <field name="average_lifespan">8</field>
+        </record>
+
+        <record id="breed_dog_beagle" model="pet.breed">
+            <field name="name">Beagle</field>
+            <field name="pet_type_id" ref="pet_type_dog"/>
+            <field name="average_weight">12</field>
+            <field name="average_lifespan">13</field>
+        </record>
+
+        <record id="breed_dog_poodle" model="pet.breed">
+            <field name="name">Poodle</field>
+            <field name="pet_type_id" ref="pet_type_dog"/>
+            <field name="average_weight">25</field>
+            <field name="average_lifespan">14</field>
+        </record>
+
+        <record id="breed_dog_chihuahua" model="pet.breed">
+            <field name="name">Chihuahua</field>
+            <field name="pet_type_id" ref="pet_type_dog"/>
+            <field name="average_weight">3</field>
+            <field name="average_lifespan">15</field>
+        </record>
+
+        <record id="breed_dog_mixed" model="pet.breed">
+            <field name="name">Mixed Breed</field>
+            <field name="pet_type_id" ref="pet_type_dog"/>
+        </record>
+
+        <!-- Cat Breeds -->
+        <record id="breed_cat_persian" model="pet.breed">
+            <field name="name">Persian</field>
+            <field name="pet_type_id" ref="pet_type_cat"/>
+            <field name="average_weight">5</field>
+            <field name="average_lifespan">15</field>
+        </record>
+
+        <record id="breed_cat_siamese" model="pet.breed">
+            <field name="name">Siamese</field>
+            <field name="pet_type_id" ref="pet_type_cat"/>
+            <field name="average_weight">4</field>
+            <field name="average_lifespan">15</field>
+        </record>
+
+        <record id="breed_cat_maine_coon" model="pet.breed">
+            <field name="name">Maine Coon</field>
+            <field name="pet_type_id" ref="pet_type_cat"/>
+            <field name="average_weight">7</field>
+            <field name="average_lifespan">13</field>
+        </record>
+
+        <record id="breed_cat_british_shorthair" model="pet.breed">
+            <field name="name">British Shorthair</field>
+            <field name="pet_type_id" ref="pet_type_cat"/>
+            <field name="average_weight">5</field>
+            <field name="average_lifespan">14</field>
+        </record>
+
+        <record id="breed_cat_ragdoll" model="pet.breed">
+            <field name="name">Ragdoll</field>
+            <field name="pet_type_id" ref="pet_type_cat"/>
+            <field name="average_weight">6</field>
+            <field name="average_lifespan">15</field>
+        </record>
+
+        <record id="breed_cat_domestic_shorthair" model="pet.breed">
+            <field name="name">Domestic Shorthair</field>
+            <field name="pet_type_id" ref="pet_type_cat"/>
+            <field name="average_weight">4</field>
+            <field name="average_lifespan">15</field>
+        </record>
+
+        <record id="breed_cat_mixed" model="pet.breed">
+            <field name="name">Mixed Breed</field>
+            <field name="pet_type_id" ref="pet_type_cat"/>
+        </record>
+
+        <!-- Bird Breeds -->
+        <record id="breed_bird_parrot" model="pet.breed">
+            <field name="name">Parrot</field>
+            <field name="pet_type_id" ref="pet_type_bird"/>
+            <field name="average_lifespan">50</field>
+        </record>
+
+        <record id="breed_bird_canary" model="pet.breed">
+            <field name="name">Canary</field>
+            <field name="pet_type_id" ref="pet_type_bird"/>
+            <field name="average_lifespan">10</field>
+        </record>
+
+        <record id="breed_bird_budgie" model="pet.breed">
+            <field name="name">Budgerigar</field>
+            <field name="pet_type_id" ref="pet_type_bird"/>
+            <field name="average_lifespan">8</field>
+        </record>
+
+        <record id="breed_bird_cockatiel" model="pet.breed">
+            <field name="name">Cockatiel</field>
+            <field name="pet_type_id" ref="pet_type_bird"/>
+            <field name="average_lifespan">15</field>
+        </record>
+
+        <!-- Rabbit Breeds -->
+        <record id="breed_rabbit_holland_lop" model="pet.breed">
+            <field name="name">Holland Lop</field>
+            <field name="pet_type_id" ref="pet_type_rabbit"/>
+            <field name="average_weight">2</field>
+            <field name="average_lifespan">8</field>
+        </record>
+
+        <record id="breed_rabbit_netherland_dwarf" model="pet.breed">
+            <field name="name">Netherland Dwarf</field>
+            <field name="pet_type_id" ref="pet_type_rabbit"/>
+            <field name="average_weight">1</field>
+            <field name="average_lifespan">10</field>
+        </record>
+
+        <record id="breed_rabbit_lionhead" model="pet.breed">
+            <field name="name">Lionhead</field>
+            <field name="pet_type_id" ref="pet_type_rabbit"/>
+            <field name="average_weight">2</field>
+            <field name="average_lifespan">9</field>
+        </record>
+
+        <!-- Hamster Breeds -->
+        <record id="breed_hamster_syrian" model="pet.breed">
+            <field name="name">Syrian Hamster</field>
+            <field name="pet_type_id" ref="pet_type_hamster"/>
+            <field name="average_weight">0.2</field>
+            <field name="average_lifespan">3</field>
+        </record>
+
+        <record id="breed_hamster_dwarf" model="pet.breed">
+            <field name="name">Dwarf Hamster</field>
+            <field name="pet_type_id" ref="pet_type_hamster"/>
+            <field name="average_weight">0.1</field>
+            <field name="average_lifespan">2</field>
+        </record>
+
+        <!-- Generic breeds for other types -->
+        <record id="breed_guinea_pig_general" model="pet.breed">
+            <field name="name">Guinea Pig</field>
+            <field name="pet_type_id" ref="pet_type_guinea_pig"/>
+            <field name="average_weight">1</field>
+            <field name="average_lifespan">6</field>
+        </record>
+
+        <record id="breed_fish_goldfish" model="pet.breed">
+            <field name="name">Goldfish</field>
+            <field name="pet_type_id" ref="pet_type_fish"/>
+            <field name="average_lifespan">10</field>
+        </record>
+
+        <record id="breed_fish_betta" model="pet.breed">
+            <field name="name">Betta Fish</field>
+            <field name="pet_type_id" ref="pet_type_fish"/>
+            <field name="average_lifespan">3</field>
+        </record>
+
+        <record id="breed_reptile_gecko" model="pet.breed">
+            <field name="name">Gecko</field>
+            <field name="pet_type_id" ref="pet_type_reptile"/>
+            <field name="average_lifespan">10</field>
+        </record>
+
+        <record id="breed_reptile_turtle" model="pet.breed">
+            <field name="name">Turtle</field>
+            <field name="pet_type_id" ref="pet_type_reptile"/>
+            <field name="average_lifespan">30</field>
+        </record>
+
+    </data>
+</odoo>
+
+

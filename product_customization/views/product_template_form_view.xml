@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="product_template_form_view_pet_custom" model="ir.ui.view">
+        <field name="name">product.template.form.pet.custom</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//group[@name='internal_notes']" position="before">
+                <!-- Pet Classification Section -->
+                <group name="product_info">
+                    <group name="product_basic_info" string="Basic Information">
+                        <field name="id"/>
+                        <field name="create_date" string="Created At" widget="datetime"/>
+                        <field name="active" string="Active" widget="boolean_toggle"/>
+                        <field name="visibility_online" widget="boolean_toggle"/>
+                        <field name="brand_id"/>
+                    </group>
+
+                    <group name="physical_dimension_info" string="Product Dimension">
+                        <label for="length"/>
+                        <div class="d-flex align-items-center">
+                            <field name="length" class="oe_inline"/>
+                            <field name="length_uom_name" class="ms-1"/>
+                        </div>
+
+                        <label for="height"/>
+                        <div class="d-flex align-items-center">
+                            <field name="height" class="oe_inline"/>
+                            <field name="height_uom_name" class="ms-1"/>
+                        </div>
+
+                        <label for="breadth"/>
+                        <div class="d-flex align-items-center">
+                            <field name="breadth" class="oe_inline"/>
+                            <field name="breadth_uom_name" class="ms-1"/>
+                        </div>
+                    </group>
+                </group>
+            </xpath>
+
+            <!-- Add the new "Pet Information" page inside the notebook (at the end) -->
+            <xpath expr="//notebook" position="inside">
+                <page string="Pet Information" name="pet_information">
+
+                    <!-- Pet Classification -->
+                    <group name="pet_classification">
+                        <group name="pet_basic_info" string="Basic Information">
+                            <field name="pet_type_id" colspan="2" required="type != 'service'"/>
+                            <field name="breed_id" required="type != 'service'"/>
+                            <field name="life_stage"/>
+                            <field name="breed_specific"/>
+                            <field name="recommended_age_range"/>
+                        </group>
+
+                        <group name="physical_attributes">
+                            <group name="product_characteristics" string="Product Characteristics">
+                                <field name="material"/>
+                                <field name="form_factor" widget="selection"/>
+                                <field name="texture" widget="selection"/>
+                            </group>
+                        </group>
+                    </group>
+
+                    <!-- Nutrition -->
+                    <group name="nutrition" string="Nutrition">
+                        <group name="nutrition_details" string="Nutritional Information">
+                            <field name="protein_source"/>
+                            <field name="nutritional_protein_pct"/>
+                            <field name="nutritional_fat_pct"/>
+                            <field name="nutritional_fibre_pct"/>
+                            <field name="kcal_per_kg"/>
+                        </group>
+                        <group name="allergen_info" string="Allergen Information">
+                            <field name="allergen_flags"
+                                   placeholder="Common allergens (e.g., Grain, Soy, Dairy)"/>
+                        </group>
+                    </group>
+
+                    <!-- Marketing / Content -->
+                    <group name="marketing_content">
+                        <group name="product_marketing" string="Product Marketing">
+                            <field name="product_function" widget="textarea"
+                                   placeholder="Main function/purpose of the product"/>
+                            <field name="benefits_text" widget="textarea"
+                                   placeholder="Key benefits for the pet"/>
+                            <field name="key_features_text" widget="textarea"
+                                   placeholder="Distinguishing features"/>
+                        </group>
+
+                        <group name="usage_safety" string="Usage &amp; Safety">
+                            <field name="usage_instructions" widget="textarea"
+                                   placeholder="How to use this product"/>
+                            <field name="contraindications" widget="textarea"
+                                   placeholder="When NOT to use this product"/>
+                            <field name="hazard_notes" widget="textarea"
+                                   placeholder="Potential hazards or warnings"/>
+                            <field name="storage_instruction" widget="textarea"
+                                   placeholder="Storage recommendations"/>
+                        </group>
+                    </group>
+
+                    <!-- Commercial / Logistics -->
+                    <group name="commercial_logistics">
+                        <group name="shipping_handling" string="Shipping &amp; Handling">
+                            <field name="is_returnable" widget="boolean_toggle"
+                                   string="Returnable Item"/>
+                            <field name="return_policy_type" widget="selection"
+                                   string="Return Policy"/>
+                            <field name="fragile_item" widget="boolean_toggle"
+                                   string="Fragile Item"/>
+                        </group>
+
+                        <group name="expiry_management" string="Expiry Management">
+                            <field name="expiry_applicable" widget="boolean_toggle"
+                                   string="Has Expiry Date"/>
+                        </group>
+                    </group>
+
+                    <!-- Subscription + Certifications -->
+                    <group name="subscription">
+                        <group name="subscription_settings" string="Subscription Configuration">
+                            <field name="recommended_for_subscription" widget="boolean_toggle"
+                                   string="Recommended for Subscription"/>
+                            <field name="subscription_cycle" widget="selection"
+                                   string="Subscription Cycle"/>
+                            <field name="subscription_cycle_count"
+                                   string="Subscription Cycle Count"/>
+                        </group>
+
+                        <group name="certification_details" string="Certifications">
+                            <field name="certifications_text"
+                                   placeholder="Add certifications (e.g., AAFCO, Organic, Non-GMO)"/>
+                        </group>
+                    </group>
+
+                </page>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>

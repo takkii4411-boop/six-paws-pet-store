@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="pet_profile_portal_rule" model="ir.rule">
+        <field name="name">Pet Profile Portal Access</field>
+        <field name="model_id" ref="model_pet_profile"/>
+        <field name="groups" eval="[(4, ref('base.group_portal'))]"/>
+        <field name="domain_force">
+            [('partner_id', '=', user.partner_id.id)]
+        </field>
+    </record>
+</odoo>
